@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+
+
+const Map = ReactMapboxGl({
+  accessToken:
+    'pk.eyJ1IjoiY2dvbnphcnUiLCJhIjoiY2sybmRia2NhMDB0dzNtbDk2YjYzdHNqbyJ9.d6EpSBUDXqxRQTycAACMEw'
+});
+
 
 class SimpleMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
-  };
+
 
   render() {
     return (
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyA9c4bt8w-yLIsNcfpqNhL8IeCOr12l-Mo' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-          />
-        </GoogleMapReact>
-      </div>
+      <Map
+      style="mapbox://styles/mapbox/streets-v9"
+      containerStyle={{
+        height: '80vh',
+        width: '80vw'
+      }}
+      >
+        <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
+          <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+        </Layer>
+
+      </Map>
     );
   }
 }
