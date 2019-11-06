@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {fetchLocation} from './services/fetchLocation';
+import SimpleMap from './components/SimpleMap';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getLocation();
+    //this.getLocation();
   }
 
   getLocation() {
@@ -32,7 +33,7 @@ class App extends React.Component {
         </header>
 
         <main className="app__main">
-
+          <SimpleMap />
         </main>
 
         <footer className="app__footer">
